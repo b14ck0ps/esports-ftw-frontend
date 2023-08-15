@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function page() {
     return (
         <>
+            <Image src="/esports-ftw.png" alt="bg" width={150} height={150} className="m-auto mt-10" />
             <main className="flex flex-col justify-center items-center h-screen">
 
                 <section className="text-center mb-10">
