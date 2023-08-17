@@ -3,26 +3,33 @@ import { Player } from "@/types"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import PlayerList from "./PlayerList"
-export default function page() {
+import { Search } from "./Search"
 
-    const [players, setPlayers] = useState<Player[]>([])
+export default function Page() {
+    const [players, setPlayers] = useState<Player[]>([]);
+    const [searchTerm, setSearchTerm] = useState<string>('');
 
     useEffect(() => {
-        fetchPlayers()
-    }, [])
+        fetchPlayers();
+    }, []);
 
     async function fetchPlayers() {
-        const response = await axios.get('https://localhost:7033/api/Player')
-        setPlayers(response.data)
+        try {
+            const response = await axios.get('https://localhost:7033/api/Player');
+            setPlayers(response.data);
+        } catch (error) {
+            console.error('Error fetching players:', error);
+        }
     }
 
+    const filteredPlayers = players.filter(player =>
+        player.ign.toLowerCase().trim().includes(searchTerm.toLowerCase().trim())
+    );
 
     return (
         <main className="w-3/4 m-auto">
-            <PlayerList players={players} />
+            <Search setSearchTerm={setSearchTerm} />
+            <PlayerList players={filteredPlayers} />
         </main>
-    )
+    );
 }
-
-
-
