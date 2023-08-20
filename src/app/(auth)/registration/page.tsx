@@ -45,6 +45,16 @@ export default function SignupPage() {
     const [formData, setFormData] = useState(initialFormState);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
 
+    const validateForm = () => {
+        let valid = true;
+        Object.values(formErrors).forEach((error) => {
+            if (error.length > 0) {
+                valid = false;
+            }
+        });
+        return valid;
+    };
+
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = event.target;
         setFormData((prevData) => ({
@@ -53,30 +63,195 @@ export default function SignupPage() {
         }));
 
         // Validate and update formErrors based on changes
-        if (name === 'confirmPassword') {
-            if (true) {
-                setFormErrors((prevErrors) => ({
-                    ...prevErrors,
-                    [name]: 'Invalid email address',
-                }));
-            } else {
-                setFormErrors((prevErrors) => ({
-                    ...prevErrors,
-                    [name]: '',
-                }));
-            }
+        switch (name) {
+            case "email":
+                if (!value) {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        email: "Email is required",
+                    }));
+                }
+                else if (!value.includes("@")) {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        email: "Invalid email",
+                    }));
+                }
+                else {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        email: "",
+                    }));
+                }
+                break;
+            case "name":
+                if (!value) {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        name: "Name is required",
+                    }));
+                }
+                else {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        name: "",
+                    }));
+                }
+                break;
+            case "ign":
+                if (!value) {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        ign: "IGN is required",
+                    }));
+                }
+                else {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        ign: "",
+                    }));
+                }
+                break;
+            case "dob":
+                if (!value) {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        dob: "Date of birth is required",
+                    }));
+                }
+                else {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        dob: "",
+                    }));
+                }
+                break;
+            case "password":
+                if (!value) {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        password: "Password is required",
+                    }));
+                }
+                else if (value.length < 6) {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        password: "Password must be at least 6 characters",
+                    }));
+                }
+                else {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        password: "",
+                    }));
+                }
+                break;
+            case "confirmPassword":
+                if (!value) {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        confirmPassword: "Confirm password is required",
+                    }));
+                }
+                else if (value !== formData.password) {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        confirmPassword: "Password does not match",
+                    }));
+                }
+                else {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        confirmPassword: "",
+                    }));
+                }
+                break;
+            case "selectedCountry":
+                if (!value) {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        selectedCountry: "Country is required",
+                    }));
+                }
+                else {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        selectedCountry: "",
+                    }));
+                }
+                break;
+            case "city":
+                if (!value) {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        city: "City is required",
+                    }));
+                }
+                else {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        city: "",
+                    }));
+                }
+                break;
+            case "street":
+                if (!value) {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        street: "Street is required",
+                    }));
+                }
+                else {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        street: "",
+                    }));
+                }
+                break;
+            case "zipCode":
+                if (!value) {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        zipCode: "Zip code is required",
+                    }));
+                }
+                else {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        zipCode: "",
+                    }));
+                }
+                break;
+            case "phone":
+                if (!value) {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        phone: "Phone is required",
+                    }));
+                }
+                else {
+                    setFormErrors((prevErrors) => ({
+                        ...prevErrors,
+                        phone: "",
+                    }));
+                }
+                break;
         }
+
     };
 
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log(formData);
-        return
 
+        if (!validateForm()) {
+            return;
+        }
 
         try {
-            const response = await axios.post("https://localhost:7033/api/Player", { formData });
+            const response = await axios.post("https://localhost:7033/api/Player", {
+                ...formData,
+            });
 
             if (response.status === 201) {
                 router.push('/login')
@@ -257,6 +432,7 @@ export default function SignupPage() {
                             value={formData.password}
                             onChange={handleInputChange}
                         />
+                        {formErrors.password && <p className="text-red-500">{formErrors.password}</p>}
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
@@ -270,7 +446,7 @@ export default function SignupPage() {
                             value={formData.confirmPassword}
                             onChange={handleInputChange}
                         />
-                        {formErrors.password && <p className="text-red-500">{formErrors.password}</p>}
+                        {formErrors.confirmPassword && <p className="text-red-500">{formErrors.confirmPassword}</p>}
                     </div>
 
                     <button type="submit" className="w-full bg-white py-2 mt-8 rounded-lg text-black">
