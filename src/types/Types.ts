@@ -65,4 +65,5 @@ export type RegFormData = {
     city: string;
     street: string;
     zipCode: string;
+    phone: string;
 };

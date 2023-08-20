@@ -21,6 +21,7 @@ const initialFormState: RegFormData = {
     city: "",
     street: "",
     zipCode: "",
+    phone: "",
 };
 
 const initialFormErrors: FormErrors = {
@@ -34,6 +35,7 @@ const initialFormErrors: FormErrors = {
     city: "",
     street: "",
     zipCode: "",
+    phone: "",
 };
 
 
@@ -95,7 +97,7 @@ export default function SignupPage() {
 
     return (
         <>
-            <main className="flex flex-col justify-center items-center h-screen mt-10">
+            <main className="flex flex-col items-center mt-10">
                 <section className="text-center mb-10">
                     <span className="text-xl">Sign up to</span> <br />
                     <Link href="/">
@@ -104,48 +106,66 @@ export default function SignupPage() {
                 </section>
 
                 <form onSubmit={handleSubmit} className="w-80 md:w-full md:px-10 lg:w-[800px] ">
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text">Name</span>
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="John Doe"
-                            id="name"
-                            name="name"
-                            className="input input-bordered w-full"
-                            value={formData.name}
-                            onChange={handleInputChange}
-                        />
-                    </div>
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text">IGN</span>
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="eg. b14ck0ps"
-                            id="username"
-                            name="ign"
-                            className="input input-bordered w-full"
-                            value={formData.ign}
-                            onChange={handleInputChange}
-                        />
-                    </div>
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text">Email</span>
-                        </label>
-                        <input
-                            type="email"
-                            placeholder="someone@mail.com"
-                            className="input input-bordered w-full"
-                            value={formData.email}
-                            name="email"
-                            onChange={handleInputChange}
-                        />
-                        {formErrors.email && <p className="text-red-500">{formErrors.email}</p>}
-                    </div>
+                    <section className="flex gap-3 ">
+                        <div className="form-control w-full">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="John Doe"
+                                id="name"
+                                name="name"
+                                className="input input-bordered w-full"
+                                value={formData.name}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div className="form-control w-full">
+                            <label className="label">
+                                <span className="label-text">IGN</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="eg. b14ck0ps"
+                                id="username"
+                                name="ign"
+                                className="input input-bordered w-full"
+                                value={formData.ign}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                    </section>
+                    <section className="flex gap-3">
+                        <div className="form-control w-full">
+                            <label className="label">
+                                <span className="label-text">Phone</span>
+                            </label>
+                            <input
+                                type="number"
+                                placeholder="017777777777"
+                                className="input input-bordered w-full"
+                                value={formData.phone}
+                                name="phone"
+                                onChange={handleInputChange}
+                            />
+                            {formErrors.phone && <p className="text-red-500">{formErrors.phone}</p>}
+                        </div>
+                        <div className="form-control w-full">
+                            <label className="label">
+                                <span className="label-text">Email</span>
+                            </label>
+                            <input
+                                type="email"
+                                placeholder="someone@mail.com"
+                                className="input input-bordered w-full"
+                                value={formData.email}
+                                name="email"
+                                onChange={handleInputChange}
+                            />
+                            {formErrors.email && <p className="text-red-500">{formErrors.email}</p>}
+                        </div>
+                    </section>
                     <section className="flex gap-3">
                         <div className="form-control w-1/2">
                             <label className="label">
