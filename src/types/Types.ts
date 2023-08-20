@@ -50,6 +50,19 @@ interface Team {
     name: string;
 }
 
-export interface Countries {
+export interface ICountry {
     [key: string]: string;
 }
+
+export type RegFormData = {
+    email: string;
+    name: string;
+    ign: string;
+    dob: string;
+    password: string;
+    confirmPassword: string;
+    selectedCountry: string | null;
+    city: string;
+    street: string;
+    zipCode: string;
+};

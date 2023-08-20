@@ -4,14 +4,13 @@ import Image from "next/image";
 export default function page() {
     return (
         <>
-            <Link href='/'>
-                <Image src="/esports-ftw.png" alt="bg" width={150} height={150} className="m-auto mt-10" />
-            </Link>
             <main className="flex flex-col justify-center items-center h-screen ">
 
                 <section className="text-center mb-10">
                     <span className="text-xl">Sign in to</span> <br />
-                    <h1 className="text-3xl font-bold text-white">Esports FTW</h1>
+                    <Link href='/'>
+                        <Image src="/esports-ftw.png" alt="bg" width={150} height={150} className="m-auto mt-10" />
+                    </Link>
                 </section>
 
                 <form className="w-80 md:w-full md:px-10 lg:w-[800px] ">

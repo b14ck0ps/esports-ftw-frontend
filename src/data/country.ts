@@ -1,5 +1,5 @@
-import { Countries } from "@/types"
-export const counties: Countries = {
+import { ICountry } from "@/types"
+export const countries: ICountry = {
     "ad": "Andorra",
     "ae": "United Arab Emirates",
     "af": "Afghanistan",
