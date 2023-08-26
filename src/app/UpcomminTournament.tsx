@@ -1,3 +1,4 @@
+import { FiTrendingUp } from 'react-icons/fi';
 const r_tournaments = [
     {
         name: "Valorant Chapion League 2034",
@@ -38,14 +39,14 @@ export default function UpcomminTournament() {
                 <div>
                     <div className="flex gap-20 items-center">
                         <div className="flex items-center gap-3">
-                            <i className="fa-solid fa-arrow-trend-up" />
+                            <FiTrendingUp />
                             <p className="font-bold">Upcomming Tournaments</p>
                         </div>
                         <div
                             className="flex text-sm items-center gap-4 bg-slate-800 rounded-lg px-4 py-2 cursor-pointer hover:bg-gray-700 transition-all"
                         >
                             <p>More</p>
-                            <i className="fa-solid fa-arrow-right" />
+                            &gt;
                         </div>
                     </div>
                     <div className="mt-2">

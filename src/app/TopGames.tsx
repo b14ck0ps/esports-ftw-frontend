@@ -1,3 +1,4 @@
+import { LuGamepad2 } from 'react-icons/lu'
 const t_games = [
     {
         name: "Valorant",
@@ -31,16 +32,14 @@ export default function TopGames() {
                 <div>
                     <div className="flex items-center gap-20">
                         <div className="flex items-center gap-3">
-                            <i
-                                className="p-2 bg-slate-800 rounded-lg fa-solid fa-clock-rotate-left"
-                            />
+                            <LuGamepad2 />
                             <p className="font-bold">Top Games</p>
                         </div>
                         <div
                             className="flex items-center gap-4 px-4 py-2 text-sm transition-all bg-slate-800 rounded-lg cursor-pointer hover:bg-gray-700"
                         >
                             <p>More</p>
-                            <i className="fa-solid fa-arrow-right" />
+                            &gt;
                         </div>
                     </div>
                     <div className="mt-2">

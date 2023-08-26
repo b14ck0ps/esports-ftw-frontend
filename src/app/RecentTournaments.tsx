@@ -1,3 +1,4 @@
+import { PiClockCounterClockwiseLight } from 'react-icons/pi';
 const r_tournaments = [
     {
         name: "Valorant Chapion League 2034",
@@ -37,16 +38,14 @@ export default function RecentTournaments() {
                 <div>
                     <div className="flex gap-20 items-center">
                         <div className="flex items-center gap-3">
-                            <i
-                                className="fa-solid fa-clock-rotate-left bg-slate-800 p-2 rounded-lg"
-                            />
+                            <PiClockCounterClockwiseLight />
                             <p className="font-bold">Recent Tournaments</p>
                         </div>
                         <div
                             className="flex text-sm items-center gap-4 bg-slate-800 rounded-lg px-4 py-2 cursor-pointer hover:bg-gray-700 transition-all"
                         >
                             <p>More</p>
-                            <i className="fa-solid fa-arrow-right" />
+                            &gt;
                         </div>
                     </div>
                     <div className="mt-2">
