@@ -9,6 +9,7 @@ import Sort from "./Sort"
 export default function Page() {
     const [players, setPlayers] = useState<Player[]>([]);
     const [searchTerm, setSearchTerm] = useState<string>('');
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetchPlayers();
@@ -18,6 +19,7 @@ export default function Page() {
         try {
             const response = await axios.get('https://localhost:7033/api/Player');
             setPlayers(response.data);
+            setLoading(false);
         } catch (error) {
             console.error('Error fetching players:', error);
         }
@@ -47,7 +49,11 @@ export default function Page() {
                 <Search setSearchTerm={setSearchTerm} />
                 <Sort handleSortChange={handleSort} />
             </section>
-            <PlayerList players={filteredPlayers} />
+            {loading ?
+                <div className="flex justify-center mt-60">
+                    <span className="loading loading-infinity loading-lg"></span>
+                </div> :
+                <PlayerList players={filteredPlayers} />}
         </main>
     );
 }
