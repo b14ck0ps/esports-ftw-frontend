@@ -1,4 +1,5 @@
 'use client'
+import { IsAuthenticated } from "@/lib/Auth";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -11,6 +12,12 @@ export default function page() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [loginError, setLoginError] = useState('')
+
+    if (IsAuthenticated()) {
+        router.push('/dashboard')
+        return
+    }
+
 
     async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()

@@ -1,4 +1,5 @@
 'use client'
+import { IsAuthenticated } from "@/lib/Auth";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -10,9 +11,6 @@ export default function Nav() {
     const [auth, setAuth] = useState(false)
     const router = useRouter()
     useEffect(() => {
-        const IsAuthenticated = () => {
-            return localStorage.getItem('user_id') !== null && localStorage.getItem('user_id') !== undefined;
-        }
         if (IsAuthenticated()) {
             setAuth(true)
         }

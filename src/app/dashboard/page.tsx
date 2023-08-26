@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react'
 import { IoMdArrowBack } from 'react-icons/io'
 import Details from './Details'
 import EditDetails from './EditDetails'
+import { IsAuthenticated } from '@/lib/Auth'
 
 export default function page() {
 
@@ -18,6 +19,11 @@ export default function page() {
     const [loading, setLoading] = useState(true)
 
     const [editMode, setEditMode] = useState(false)
+
+    if (!IsAuthenticated()) {
+        router.push('/login')
+        return
+    }
 
     useEffect(() => {
         const id = parseInt(localStorage.getItem('user_id') || '0')

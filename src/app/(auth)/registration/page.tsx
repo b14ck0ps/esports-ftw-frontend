@@ -1,5 +1,6 @@
 'use client'
 import { countries } from "@/data/country";
+import { IsAuthenticated } from "@/lib/Auth";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
@@ -9,7 +10,10 @@ import { useFormValidation } from "./FormValidationUtils";
 
 export default function SignupPage() {
     const router = useRouter()
-
+    if (IsAuthenticated()) {
+        router.push('/dashboard')
+        return
+    }
     const validateForm = () => {
         let valid = true;
         Object.values(formErrors).forEach((error) => {
