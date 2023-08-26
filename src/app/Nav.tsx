@@ -18,6 +18,7 @@ export default function Nav() {
 
     function handleLogout() {
         localStorage.removeItem('user_id')
+        sessionStorage.removeItem('user_id')
         router.push('/login')
         setAuth(false)
     }

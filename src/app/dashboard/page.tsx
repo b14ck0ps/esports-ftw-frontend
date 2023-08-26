@@ -1,4 +1,5 @@
 'use client'
+import { IsAuthenticated } from '@/lib/Auth'
 import { getFullCountryName } from '@/lib/Util'
 import { Player } from '@/types'
 import axios from 'axios'
@@ -9,7 +10,6 @@ import { useEffect, useState } from 'react'
 import { IoMdArrowBack } from 'react-icons/io'
 import Details from './Details'
 import EditDetails from './EditDetails'
-import { IsAuthenticated } from '@/lib/Auth'
 
 export default function page() {
 
@@ -26,7 +26,7 @@ export default function page() {
     }
 
     useEffect(() => {
-        const id = parseInt(localStorage.getItem('user_id') || '0')
+        const id = parseInt(localStorage.getItem('user_id') || sessionStorage.getItem('user_id') || '0')
         if (id === 0 || isNaN(id)) {
             router.push('/login')
             return

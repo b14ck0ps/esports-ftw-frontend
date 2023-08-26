@@ -12,6 +12,7 @@ export default function page() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [loginError, setLoginError] = useState('')
+    const [rememberMe, setRememberMe] = useState(false)
 
     if (IsAuthenticated()) {
         router.push('/dashboard')
@@ -29,7 +30,11 @@ export default function page() {
                 return
             } else {
                 const getId = await axios.post('https://localhost:7033/api/Player/getId', { email });
-                localStorage.setItem('user_id', getId.data)
+                if (rememberMe) {
+                    localStorage.setItem('user_id', getId.data)
+                } else {
+                    sessionStorage.setItem('user_id', getId.data)
+                }
                 // router.push('/dashboard')
                 window.location.href = '/dashboard'
             }
@@ -72,7 +77,7 @@ export default function page() {
                     <div className="flex justify-between items-end">
                         <div className="mt-5">
                             <label className="flex gap-4 items-center">
-                                <input type="checkbox" className="checkbox checkbox-primary" />
+                                <input onChange={() => setRememberMe(!rememberMe)} type="checkbox" className="checkbox checkbox-primary" />
                                 <span className="label-text ">Remember me</span>
                             </label>
                         </div>
