@@ -1,6 +1,7 @@
 import { getFullCountryName } from '@/lib/Util';
 import { Player } from '@/types';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 export default function PlayerList({ players }: { players: Player[] }): React.JSX.Element {
@@ -33,8 +34,9 @@ export default function PlayerList({ players }: { players: Player[] }): React.JS
                                     </span>
                                 )}
                                 <section>
-                                    <p className="text-xl">{player.ign}</p>
-                                    <span>{player.name}</span>
+                                    <Link href={`/players/${player.id}`}>
+                                        <p className="text-xl">{player.ign}</p>
+                                        {player.name}</Link>
                                     <span className="px-1">&middot;</span>
                                     <span>Age: {new Date().getFullYear() - new Date(player.dob).getFullYear()}</span>
                                 </section>
