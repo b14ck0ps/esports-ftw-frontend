@@ -32,11 +32,11 @@ export default function page() {
     }
 
     return (
-        <>
-            <main className="flex flex-col justify-center items-center">
+        <main className="card mx-48 mt-20">
+            <section className="flex flex-col justify-center items-center card-body md:bg-slate-800 rounded-lg bg-opacity-20">
 
                 <section className="text-center my-2">
-                    <span className="text-2xl">Sign in</span> <br />
+                    <span className="text-2xl">Sign in</span>
                 </section>
 
                 <form onSubmit={handleLogin} className="w-80 md:w-full md:px-10 lg:w-[800px] ">
@@ -84,7 +84,7 @@ export default function page() {
                     </span>
                 </div>
 
-            </main>
-        </>
+            </section>
+        </main>
     )
 }
