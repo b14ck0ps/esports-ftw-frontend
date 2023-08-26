@@ -1,8 +1,6 @@
 'use client'
 import { countries } from "@/data/country";
-import { RegFormData } from "@/types";
 import axios from "axios";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import React from "react";
@@ -57,11 +55,8 @@ export default function SignupPage() {
     return (
         <>
             <main className="flex flex-col items-center mt-10">
-                <section className="text-center mb-10">
-                    <span className="text-xl">Sign up to</span> <br />
-                    <Link href="/">
-                        <Image src="/esports-ftw.png" alt="bg" width={150} height={150} className="m-auto" />
-                    </Link>
+                <section className="text-center mb-3">
+                    <span className="text-2xl">Registration As A Player</span> <br />
                 </section>
 
                 <form onSubmit={handleSubmit} className="w-80 md:w-full md:px-10 lg:w-[800px] ">

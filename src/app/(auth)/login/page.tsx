@@ -1,9 +1,8 @@
 'use client'
-import Link from "next/link";
-import Image from "next/image";
 import axios from "axios";
-import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function page() {
 
@@ -34,13 +33,10 @@ export default function page() {
 
     return (
         <>
-            <main className="flex flex-col justify-center items-center h-screen ">
+            <main className="flex flex-col justify-center items-center">
 
-                <section className="text-center mb-10">
-                    <span className="text-xl">Sign in to</span> <br />
-                    <Link href='/'>
-                        <Image src="/esports-ftw.png" alt="bg" width={150} height={150} className="m-auto mt-10" />
-                    </Link>
+                <section className="text-center my-2">
+                    <span className="text-2xl">Sign in</span> <br />
                 </section>
 
                 <form onSubmit={handleLogin} className="w-80 md:w-full md:px-10 lg:w-[800px] ">
