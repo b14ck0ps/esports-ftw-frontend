@@ -1,4 +1,4 @@
-import { countries } from '@/data/country';
+import { getFullCountryName } from '@/lib/Util';
 import { Player } from '@/types';
 import Image from 'next/image';
 import React from 'react';
@@ -51,8 +51,4 @@ export default function PlayerList({ players }: { players: Player[] }): React.JS
             </table>
         </div>
     )
-}
-function getFullCountryName(countryCode: string) {
-    const fullCountryName = countries[countryCode];
-    return fullCountryName || "Unknown";
 }

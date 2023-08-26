@@ -8,10 +8,10 @@ interface User {
 
 export interface Player extends User {
     ign: string;
-    joinDate: Date;
+    joinDate: string;
     salary: number;
     playHours: number;
-    dob: Date;
+    dob: string;
     address: PlayerAddress;
     socialLinks: PlayerSocialLink;
     playerPhones: PlayerPhone[];
@@ -19,7 +19,7 @@ export interface Player extends User {
     team: Team;
 }
 
-interface PlayerAddress {
+export interface PlayerAddress {
     id: number;
     country: string;
     city: string;
