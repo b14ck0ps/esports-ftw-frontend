@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function SiteInfoStatic() {
     return (
-        <div className="gradient p-10 w-3/4 m-auto rounded-t-lg mt-10">
+        <div className="gradient p-5 w-3/4 m-auto rounded-t-lg mt-10">
             <div className="flex flex-col justify-center items-center">
                 <h1 className="text-xl md:text-3xl font-semibold text-center my-3 mb-8">
                     Everything about the esports popularity
