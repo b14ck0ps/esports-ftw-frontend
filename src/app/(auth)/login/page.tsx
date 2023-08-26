@@ -23,7 +23,8 @@ export default function page() {
             } else {
                 const getId = await axios.post('https://localhost:7033/api/Player/getId', { email });
                 localStorage.setItem('user_id', getId.data)
-                router.push('/dashboard')
+                // router.push('/dashboard')
+                window.location.href = '/dashboard'
             }
         } catch (error) {
             setLoginError('Invalid email or password')
