@@ -55,7 +55,7 @@ export default function PlayerList({ players }: { players: Player[] }): React.JS
                                 <p className="text-xl">{player?.team?.name ?? 'Free Agent'}</p>
                                 Joined: {new Date(player?.joinDate).toLocaleDateString('en-GB')}
                             </td>
-                            <td><span className="text-xl">{player.salary}</span></td>
+                            <td><span className="text-xl">{player.salary} $</span></td>
                             <td><span className="text-xl">{player.playerWinnings?.length ?? 'none'}</span></td>
                         </tr>
                     })}
