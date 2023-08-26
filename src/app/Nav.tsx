@@ -27,7 +27,7 @@ export default function Nav() {
             <section className=" flex items-center justify-between">
                 <section className="flex items-center gap-10">
                     <Link href='/'>
-                        <Image src="/esports-ftw.png" alt="bg" width={150} height={150} />
+                        <Image src="/esports-ftw.png" alt="bg" width={100} height={15} />
                     </Link>
                     <ul className="hidden md:block">
                         <li className="inline-block mr-5">
