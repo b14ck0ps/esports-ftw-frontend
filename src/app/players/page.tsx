@@ -51,7 +51,7 @@ export default function Page() {
             </section>
             {loading ?
                 <div className="flex justify-center mt-60">
-                    <span className="loading loading-infinity loading-lg"></span>
+                    <span className="loading loading-infinity loading-lg p-10"></span>
                 </div> :
                 <PlayerList players={filteredPlayers} />}
         </main>
