@@ -1,5 +1,8 @@
 import DatabaseInfo from "./DatabaseInfo";
+import RecentTournaments from "./RecentTournaments";
 import SiteInfoStatic from "./SiteInfoStatic";
+import TopGames from "./TopGames";
+import UpcomminTournament from "./UpcomminTournament";
 
 export default function Home() {
   return (
@@ -7,10 +10,10 @@ export default function Home() {
       <main>
         <SiteInfoStatic />
         <DatabaseInfo />
-        <div className="flex justify-between w-3/4 m-auto mt-10">
-          {/* <RecentTournaments />
+        <div className="lg:flex justify-between w-3/4 m-auto mt-10">
+          <RecentTournaments />
           <UpcomminTournament />
-          <TopGames /> */}
+          <TopGames />
         </div>
       </main>
     </>
