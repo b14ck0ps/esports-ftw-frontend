@@ -42,7 +42,7 @@ export default function UpcomminTournament() {
                             <p className="font-bold">Upcomming Tournaments</p>
                         </div>
                         <div
-                            className="flex text-sm items-center gap-4 bg-gray-900 rounded-lg px-4 py-2 cursor-pointer hover:bg-gray-700 transition-all"
+                            className="flex text-sm items-center gap-4 bg-slate-800 rounded-lg px-4 py-2 cursor-pointer hover:bg-gray-700 transition-all"
                         >
                             <p>More</p>
                             <i className="fa-solid fa-arrow-right" />
@@ -51,7 +51,7 @@ export default function UpcomminTournament() {
                     <div className="mt-2">
                         {r_tournaments.map((r) => (
                             <div
-                                className="flex justify-between mb-2 bg-gray-900 p-3 rounded-xl cursor-pointer hover:scale-x-105 transition-all"
+                                className="flex justify-between mb-2 bg-slate-800 p-3 rounded-xl cursor-pointer hover:scale-x-105 transition-all"
                             >
                                 <div>
                                     <div className="flex items-center gap-3">

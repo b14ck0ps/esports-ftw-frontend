@@ -24,7 +24,7 @@ export default function DatabaseInfo() {
 
     return (
         <div
-            className="bg-gray-900 w-3/4 m-auto rounded-b-lg "
+            className="bg-slate-800 w-3/4 m-auto rounded-b-lg "
         >
             {loading ? <div className='flex justify-center items-center'><span className='loading loading-infinity p-10 loading-lg'></span></div> :
                 <section className='md:flex items-center justify-between'>

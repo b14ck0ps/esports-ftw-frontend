@@ -32,12 +32,12 @@ export default function TopGames() {
                     <div className="flex items-center gap-20">
                         <div className="flex items-center gap-3">
                             <i
-                                className="p-2 bg-gray-900 rounded-lg fa-solid fa-clock-rotate-left"
+                                className="p-2 bg-slate-800 rounded-lg fa-solid fa-clock-rotate-left"
                             />
                             <p className="font-bold">Top Games</p>
                         </div>
                         <div
-                            className="flex items-center gap-4 px-4 py-2 text-sm transition-all bg-gray-900 rounded-lg cursor-pointer hover:bg-gray-700"
+                            className="flex items-center gap-4 px-4 py-2 text-sm transition-all bg-slate-800 rounded-lg cursor-pointer hover:bg-gray-700"
                         >
                             <p>More</p>
                             <i className="fa-solid fa-arrow-right" />
@@ -46,7 +46,7 @@ export default function TopGames() {
                     <div className="mt-2">
                         {t_games.map((game) => (
                             <div
-                                className="flex justify-between p-3 mb-2 transition-all bg-gray-900 cursor-pointer rounded-xl hover:scale-x-105"
+                                className="flex justify-between p-3 mb-2 transition-all bg-slate-800 cursor-pointer rounded-xl hover:scale-x-105"
                             >
                                 <div>
                                     <div className="flex items-center gap-3">
