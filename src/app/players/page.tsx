@@ -26,7 +26,7 @@ export default function Page() {
     }
 
     const filteredPlayers = players.filter(player =>
-        player.ign.toLowerCase().trim().includes(searchTerm.toLowerCase().trim())
+        player.ign.toLowerCase().trim().includes(searchTerm.toLowerCase().trim()) || player.name.toLowerCase().trim().includes(searchTerm.toLowerCase().trim())
     );
 
     const handleSort = (selectedSort: string) => {
