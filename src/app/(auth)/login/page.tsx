@@ -22,6 +22,8 @@ export default function page() {
                 setLoginError(res.data)
                 return
             } else {
+                const getId = await axios.post('https://localhost:7033/api/Player/getId', { email });
+                localStorage.setItem('user_id', getId.data)
                 router.push('/dashboard')
             }
         } catch (error) {

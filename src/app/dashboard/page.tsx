@@ -4,18 +4,27 @@ import { Player } from '@/types'
 import axios from 'axios'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { IoMdArrowBack } from 'react-icons/io'
+import Details from './Details'
+import EditDetails from './EditDetails'
 
 export default function page() {
 
+    const router = useRouter()
 
     const [user, setUser] = useState<Player>()
     const [loading, setLoading] = useState(true)
 
+    const [editMode, setEditMode] = useState(false)
 
     useEffect(() => {
-        const id = 102
+        const id = parseInt(localStorage.getItem('user_id') || '0')
+        if (id === 0 || isNaN(id)) {
+            router.push('/login')
+            return
+        }
         getUser(id)
         setLoading(false)
     }, [])
@@ -33,6 +42,10 @@ export default function page() {
         }
     }
 
+    function handleUpdate() {
+        setEditMode(false)
+        getUser(user?.id ?? 0)
+    }
 
     if (loading) {
         return (
@@ -71,54 +84,11 @@ export default function page() {
                             <h4>{user?.email}</h4>
                         </section>
                     </main>
-                    <Link href='/players/edit' className='btn btn-secondary btn-square'>Edit</Link>
+                    <button onClick={() => setEditMode(!editMode)} className={`mr-5 btn btn-sm ${editMode ? 'btn-error' : 'btn-secondary'}`}>{editMode ? 'Cancle' : 'Edit'}</button>
                 </section>
-
-                {/* Details Section */}
-                <section className='p-2'>
-                    <table className='table'>
-                        <tbody>
-                            <tr>
-                                <td>ID: </td>
-                                <td>{user?.id}</td>
-                            </tr>
-                            <tr>
-                                <td>Name: </td>
-                                <td>{user?.name}</td>
-                            </tr>
-                            <tr>
-                                <td>Birth Date: </td>
-                                <td>{new Date(user?.dob ?? '').toLocaleDateString("en-US")}</td>
-                            </tr>
-                            <tr>
-                                <td>Join Date: </td>
-                                <td>{new Date(user?.joinDate ?? '').toLocaleDateString('en-US')}</td>
-                            </tr>
-                            <tr>
-                                <td>Play Time: </td>
-                                <td>{user?.playHours} H</td>
-                            </tr>
-                            <tr>
-                                <td>Street: </td>
-                                <td>{user?.address.street}</td>
-                            </tr>
-                            <tr>
-                                <td>City: </td>
-                                <td>{user?.address.city}</td>
-                            </tr>
-                            <tr>
-                                <td>Zip Code: </td>
-                                <td>{user?.address.zipCode}</td>
-                            </tr>
-                            <tr>
-                                <td>Country: </td>
-                                <td>{getFullCountryName(user?.address.country ?? '')}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
+                {editMode ? <EditDetails user={user} handleUpdate={handleUpdate} /> : <Details user={user} />}
             </section>
-            <Link className='text-blue-500 font-semibold flex items-center gap-2 mt-4' href='/'> <IoMdArrowBack /> back </Link>
+            <Link className='text-blue-500 font-semibold inline-flex items-center gap-2 mt-4' href='/'> <IoMdArrowBack /> back </Link>
         </main>
     )
 }
