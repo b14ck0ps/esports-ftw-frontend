@@ -32,8 +32,10 @@ export default function page() {
                 const getId = await axios.post('https://localhost:7033/api/Player/getId', { email });
                 if (rememberMe) {
                     localStorage.setItem('user_id', getId.data)
+                    localStorage.setItem('user_type', 'player')
                 } else {
                     sessionStorage.setItem('user_id', getId.data)
+                    sessionStorage.setItem('user_type', 'player')
                 }
                 // router.push('/dashboard')
                 window.location.href = '/dashboard'
@@ -98,6 +100,7 @@ export default function page() {
                 </div>
 
             </section>
+            <Link className="mt-[30vh] text-right text-red-500 opacity-50 hover:opacity-100" href='/admin/login' > Admin panel </Link>
         </main>
     )
 }

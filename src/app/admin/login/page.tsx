@@ -32,8 +32,10 @@ export default function page() {
                 const getId = await axios.post('https://localhost:7033/api/Admin/getId', { email });
                 if (rememberMe) {
                     localStorage.setItem('user_id', getId.data)
+                    sessionStorage.setItem('user_type', 'admin')
                 } else {
                     sessionStorage.setItem('user_id', getId.data)
+                    sessionStorage.setItem('user_type', 'admin')
                 }
                 // router.push('/dashboard')
                 window.location.href = '/admin'
@@ -75,28 +77,11 @@ export default function page() {
                             type="password" placeholder="***********" className="input input-bordered w-full" />
                     </div>
                     <div className="flex justify-between items-end">
-                        <div className="mt-5">
-                            <label className="flex gap-4 items-center">
-                                <input onChange={() => setRememberMe(!rememberMe)} type="checkbox" className="checkbox checkbox-primary" />
-                                <span className="label-text ">Remember me</span>
-                            </label>
-                        </div>
-                        <div className="underline label-text">
-                            <Link href='/forgot' > Forgot password?</Link>
-                        </div>
                     </div>
                     <button type="submit" className=" w-full bg-white py-2 mt-8 rounded-lg text-black">
                         Sign in
                     </button>
                 </form>
-
-                <div className="mt-5">
-                    Don't have an account yet ?
-                    <span className="underline label-text">
-                        <Link href='/registration' > Sign up </Link>
-                    </span>
-                </div>
-
             </section>
         </main>
     )

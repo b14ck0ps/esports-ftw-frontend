@@ -9,16 +9,29 @@ export default function Nav() {
 
 
     const [auth, setAuth] = useState(false)
+    const [user_type, setUser_type] = useState('')
     const router = useRouter()
+
     useEffect(() => {
+        const user_type = localStorage.getItem('user_type') || sessionStorage.getItem('user_type')
+        console.log(user_type);
+
+        setUser_type(user_type || '')
         if (IsAuthenticated()) {
             setAuth(true)
         }
+        if (user_type !== 'admin') {
+            router.push('/login')
+            return
+        }
     }, [])
+
 
     function handleLogout() {
         localStorage.removeItem('user_id')
         sessionStorage.removeItem('user_id')
+        localStorage.removeItem('user_type')
+        sessionStorage.removeItem('user_type')
         router.push('/login')
         setAuth(false)
     }
@@ -49,7 +62,7 @@ export default function Nav() {
                 <section className="hidden md:block">
                     {auth ?
                         <div className="flex gap-5">
-                            <Link className="text-white hover:text-green-500" href={`/dashboard`}> Dashboard </Link>
+                            <Link className="text-white hover:text-green-500" href={user_type === 'admin' ? '/admin' : '/dashboard'}> Dashboard </Link>
                             <button onClick={handleLogout} className="text-white hover:text-green-500"> Logout </button>
                         </div> :
                         <Link className="text-white hover:text-green-500" href={`/login`}> Login </Link>}
@@ -63,7 +76,7 @@ export default function Nav() {
                         <li><Link className="text-white hover:text-green-500" href='/tournamnets'>Tournamnets</Link> </li>
                         <li><Link className="text-white hover:text-green-500" href='/about'>About Us</Link> </li>
                         {auth ? <>
-                            <li><Link className="text-white hover:text-green-500" href={`/dashboard`}> Dashboard </Link></li>
+                            <li><Link className="text-white hover:text-green-500" href={user_type === 'admin' ? '/admin' : '/dashboard'}> Dashboard </Link></li>
                             <li><button onClick={handleLogout} className="text-white hover:text-green-500"> Logout </button></li></>
                             :
                             <li><Link className="text-white hover:text-green-500" href={`/login`}> Login </Link></li>}

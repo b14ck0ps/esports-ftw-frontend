@@ -17,6 +17,7 @@ export default function page() {
 
     const [user, setUser] = useState<Player>()
     const [loading, setLoading] = useState(true)
+    const [user_type, setUser_type] = useState('')
 
     const [editMode, setEditMode] = useState(false)
 
@@ -26,13 +27,19 @@ export default function page() {
     }
 
     useEffect(() => {
+        const user_type = localStorage.getItem('user_type') || sessionStorage.getItem('user_type')
         const id = parseInt(localStorage.getItem('user_id') || sessionStorage.getItem('user_id') || '0')
         if (id === 0 || isNaN(id)) {
             router.push('/login')
             return
         }
+
         getUser(id)
         setLoading(false)
+        if (user_type !== 'admin') {
+            // router.push('/login')
+            return
+        }
     }, [])
 
 
