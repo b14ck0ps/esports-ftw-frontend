@@ -75,3 +75,10 @@ export type Admin = {
     password: string,
     picture: string
 }
+
+export type ManagerBase = {
+    id: number,
+    name: string,
+    email: string,
+    hireDate: string,
+}
