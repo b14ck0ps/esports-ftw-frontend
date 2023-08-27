@@ -56,11 +56,18 @@ export default function Nav() {
                 </section>
 
                 <div className="md:hidden dropdown dropdown-end">
-                    <label tabIndex={0} className="m-1 w-20"><CgDetailsMore /> </label>
+                    <label tabIndex={0} className="m-1"><CgDetailsMore className="text-2xl" /> </label>
                     <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>Players</a></li>
-                        <li><a>Teams</a></li>
-                        <li><a>Login</a></li>
+                        <li><Link className="text-white hover:text-green-500" href='/players'>Players</Link> </li>
+                        <li><Link className="text-white hover:text-green-500" href='/teams'>Teams</Link> </li>
+                        <li><Link className="text-white hover:text-green-500" href='/tournamnets'>Tournamnets</Link> </li>
+                        <li><Link className="text-white hover:text-green-500" href='/about'>About Us</Link> </li>
+                        {auth ? <>
+                            <li><Link className="text-white hover:text-green-500" href={`/dashboard`}> Dashboard </Link></li>
+                            <li><button onClick={handleLogout} className="text-white hover:text-green-500"> Logout </button></li></>
+                            :
+                            <li><Link className="text-white hover:text-green-500" href={`/login`}> Login </Link></li>}
+
                     </ul>
                 </div>
             </section>
