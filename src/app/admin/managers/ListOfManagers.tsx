@@ -4,6 +4,10 @@ import React from 'react';
 
 export default function ListOfManager({ managers: managers }: { managers: ManagerBase[] | undefined }): React.JSX.Element {
 
+    const sortedManagers = managers?.sort((a, b) => {
+        return new Date(a.hireDate).getTime() - new Date(b.hireDate).getTime()
+    })
+
     return (
         <main className="overflow-x-auto mt-10">
             <table className="table table-xs">
@@ -16,7 +20,7 @@ export default function ListOfManager({ managers: managers }: { managers: Manage
                     </tr>
                 </thead>
                 <tbody>
-                    {managers?.map((manager, i) => {
+                    {sortedManagers?.map((manager, i) => {
                         return <tr key={manager.id}>
                             <th className='text-lg' >{i + 1}</th>
                             <td className='text-lg' >{manager.name}</td>

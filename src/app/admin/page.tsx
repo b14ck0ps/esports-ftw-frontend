@@ -33,7 +33,7 @@ export default function Details() {
         <main className='w-3/6 m-auto mt-5'>
             <nav className='py-2 bg-slate-700 items-center bg-opacity-20 mb-4 rounded-md flex justify-between px-3'>
                 <Link href={`/admin/managers`} className='link link-primary'>List Of Managers</Link>
-                <button className='btn btn-outline '>Add Manager</button>
+                <Link href={`/admin/managers/add`} className='btn btn-outline '>Add Manager</Link>
             </nav>
             <main className=' bg-slate-700 bg-opacity-20 rounded-lg'>
                 {/* Details Section */}
