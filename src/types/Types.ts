@@ -67,3 +67,11 @@ export type RegFormData = {
     zipCode: string;
     phone: string;
 };
+
+export type Admin = {
+    id: number,
+    name: string,
+    email: string,
+    password: string,
+    picture: string
+}

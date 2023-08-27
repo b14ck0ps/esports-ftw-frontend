@@ -40,6 +40,9 @@ export default function Nav() {
                         <li className="inline-block mr-5">
                             <Link className="text-white hover:text-green-500" href='/tournamnets'>Tournamnets</Link>
                         </li>
+                        <li className="inline-block mr-5">
+                            <Link className="text-white hover:text-green-500" href='/about'>About Us</Link>
+                        </li>
                     </ul>
                 </section>
 
