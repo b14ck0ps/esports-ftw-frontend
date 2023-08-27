@@ -14,15 +14,9 @@ export default function Nav() {
 
     useEffect(() => {
         const user_type = localStorage.getItem('user_type') || sessionStorage.getItem('user_type')
-        console.log(user_type);
-
         setUser_type(user_type || '')
         if (IsAuthenticated()) {
             setAuth(true)
-        }
-        if (user_type !== 'admin') {
-            router.push('/login')
-            return
         }
     }, [])
 
